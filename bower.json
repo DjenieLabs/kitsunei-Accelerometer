@@ -1,0 +1,12 @@
+{
+  "name": "replicator-Accelerometer",
+  "version": "0.1.0",
+  "description": "The basic community block for the accelerometer device: serial: 100, code: acc_3ax",
+  "homepage": "",
+  "authors": [
+    "Roger Camargo"
+  ],
+  "main": "main.js",
+  "keywords": [],
+  "license": "MIT"
+}
