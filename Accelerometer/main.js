@@ -68,9 +68,9 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
 
   // TODO: Move this to the block controller
   function save(){
-    // Stop closing animation until settings are saved
-    Ppanel.preventClosing = true;
-    Ppanel.loading("Saving Settings...");
+
+    // To change the default saving/loading message use:
+    // Ppanel.loading("User defined message");
 
     // Capture the basic settings and add them to my object's instance
     var settings = easy.getValues();
@@ -84,8 +84,6 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
       }else{
         alert("Error (make me a nice alert please): ", err.message);
       }
-
-      Ppanel.stopLoading();
     });
   }
 
@@ -103,19 +101,14 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
     // Create a few listeners for the close/save actions
     Ppanel.onSave(save.bind(this));
 
-
+    // Intercepts the closing action.
+    // return 'false' to cancel the event
     Ppanel.onClose(function(){
-      that.cancelLoading();
-      that.cancelSaving();
-      Ppanel.stopLoading();
+      //...
     });
 
-    Ppanel.loading("Loading settings...");
     // Read the block's settings
-    // TODO: Change easy to handleblars templates
-
     this.loadSettings(function(settings){
-      Ppanel.stopLoading();
       console.log("Settings loaded: ", settings);
       // This block uses a custom (extra) event mode,
       // so we need to modify the default settings
