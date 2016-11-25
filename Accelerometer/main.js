@@ -66,46 +66,48 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
    */
   Accelerometer.onExecute = function() {};
 
-  // TODO: Move this to the block controller
-  function save(){
+  /**
+   * Intercepts the properties panel closing action.
+   * Return "false" to abort the action.
+   * NOTE: Settings Load/Saving will atomatically
+   * stop re-trying if the event propagates.
+   */
+  Accelerometer.onCancelProperties = function(){
+    console.log("Cancelling Properties");
+  };
 
-    // To change the default saving/loading message use:
-    // Ppanel.loading("User defined message");
-
-    // Capture the basic settings and add them to my object's instance
-    var settings = easy.getValues();
-    console.log(settings);
+  /**
+   * Intercepts the properties panel save action.
+   * You must call the save method directly for the
+   * new values to be sent to hardware blocks.
+   * @param settings is an object with the values
+   * of the elements rendered in the interface.
+   * NOTE: For the settings object to contain anything
+   * you MUST have rendered the panel using standard
+   * ways (easy.showBaseSettings and easy.renderCustomSettings)
+   */
+  Accelerometer.onSaveProperties = function(settings){
+    console.log("Saving: ", settings);
     this.settings = settings;
-    this.saveSettings().then(function(){
-      Ppanel.stopLoading();
-    }).catch(function(err){
+    this.saveSettings().catch(function(err){
       if(!err.errorCode){
         console.log(err);
       }else{
         alert("Error (make me a nice alert please): ", err.message);
       }
     });
-  }
+  };
 
   /**
    * Triggered when the user clicks on a block.
    * The interace builder is automatically opened.
-   * Here we must load the elements.
+   * Here you must load the elements.
    * NOTE: This is called with the scope set to the
    * Block object, to access this modules properties
    * use Accelerometer or this.controller
    */
   Accelerometer.onClick = function(){
     var that = this;
-
-    // Create a few listeners for the close/save actions
-    Ppanel.onSave(save.bind(this));
-
-    // Intercepts the closing action.
-    // return 'false' to cancel the event
-    Ppanel.onClose(function(){
-      //...
-    });
 
     // Read the block's settings
     this.loadSettings(function(settings){

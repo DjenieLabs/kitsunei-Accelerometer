@@ -1,7 +1,7 @@
 {
-  "name": "replicator-Accelerometer",
+  "name": "replicator-Temperature",
   "version": "0.1.0",
-  "description": "The basic community block for the accelerometer device: serial: 100, code: acc_3ax",
+  "description": "Block for measure temperature",
   "homepage": "",
   "authors": [
     "Roger Camargo"
