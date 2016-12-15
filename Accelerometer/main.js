@@ -1,4 +1,5 @@
 define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel, easy){
+
   var actions = [];
   var inputs = ["X", "Y", "Z"];
   var _objects = {}; // Used to keep a reference of the interface elements
@@ -118,12 +119,12 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
       settings.EventMode = {
         property: 'EventMode',
         items: [
-          { name: "Always", value: 0, selected: (eventMode == 0)?true:false },
-          { name: "ChangeBy", value: 1, selected: (eventMode == 1)?true:false },
-          { name: "EqualTo", value: 2, selected: (eventMode == 2)?true:false },
-          { name: "GreaterThan", value: 4, selected: (eventMode == 4)?true:false },
-          { name: "LowerThan", value: 8, selected: (eventMode == 8)?true:false },
-          { name: "AxisCompare", value: 16, selected: (eventMode == 16)?true:false }
+          { name: "Always", value: 0, selected: (eventMode === 0)?true:false },
+          { name: "ChangeBy", value: 1, selected: (eventMode === 1)?true:false },
+          { name: "EqualTo", value: 2, selected: (eventMode === 2)?true:false },
+          { name: "GreaterThan", value: 4, selected: (eventMode === 4)?true:false },
+          { name: "LowerThan", value: 8, selected: (eventMode === 8)?true:false },
+          { name: "AxisCompare", value: 16, selected: (eventMode === 16)?true:false }
         ]
       };
 
@@ -132,25 +133,24 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
       settings.Custom.SamplingRate = {
         property: 'Custom.SamplingRate',
         items: [
-          {name: "1Hz", value: 7, selected: settings.Custom.SamplingRate == 7?true:false},
-          {name: "2Hz", value: 6, selected: settings.Custom.SamplingRate == 6?true:false},
-          {name: "4Hz", value: 5, selected: settings.Custom.SamplingRate == 5?true:false},
-          {name: "8Hz", value: 4, selected: settings.Custom.SamplingRate == 4?true:false},
-          {name: "16Hz", value: 3, selected: settings.Custom.SamplingRate == 3?true:false},
-          {name: "32Hz", value: 2, selected: settings.Custom.SamplingRate == 2?true:false},
-          {name: "64Hz", value: 1, selected: settings.Custom.SamplingRate == 1?true:false},
-          {name: "120Hz", value: 0, selected: settings.Custom.SamplingRate == 0?true:false}
+          {name: "1Hz", value: 7, selected: settings.Custom.SamplingRate === 7?true:false},
+          {name: "2Hz", value: 6, selected: settings.Custom.SamplingRate === 6?true:false},
+          {name: "4Hz", value: 5, selected: settings.Custom.SamplingRate === 5?true:false},
+          {name: "8Hz", value: 4, selected: settings.Custom.SamplingRate === 4?true:false},
+          {name: "16Hz", value: 3, selected: settings.Custom.SamplingRate === 3?true:false},
+          {name: "32Hz", value: 2, selected: settings.Custom.SamplingRate === 2?true:false},
+          {name: "64Hz", value: 1, selected: settings.Custom.SamplingRate === 1?true:false},
+          {name: "120Hz", value: 0, selected: settings.Custom.SamplingRate === 0?true:false}
         ]
       };
 
       // Select default selected item
       settings.Custom.SamplingRate.items.some(function(item){
-        if(item.selected == true){
+        if(item.selected === true){
           settings.Custom.SamplingRate.default = item.name;
           return true;
         }
       });
-
 
       settings.Custom.AxisMonitor = {
         property: 'Custom.AxisMonitor',
@@ -196,4 +196,5 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
   Accelerometer.onAddedtoCanvas = function(){};
 
   return Accelerometer;
+
 });
