@@ -1,12 +1,12 @@
 {
   "name": "replicator-Accelerometer",
   "version": "0.1.0",
-  "description": "Accelerometer device: acc_3ax, serial: 100",
+  "description": "Accelerometer Block",
   "homepage": "",
   "authors": [
-    "Roger Camargo"
+    "Alexander Agudelo"
   ],
-  "main": "main.js",
+  "main": "dist/main.js",
   "keywords": [],
   "license": "MIT"
 }
