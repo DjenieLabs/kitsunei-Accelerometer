@@ -1,12 +1,12 @@
 {
-  "name": "replicator-Temperature",
+  "name": "replicator-Accelerometer",
   "version": "0.1.0",
-  "description": "Block for measure temperature",
+  "description": "Accelerometer Block",
   "homepage": "",
   "authors": [
-    "Roger Camargo"
+    "Alexander Agudelo"
   ],
-  "main": "main.js",
+  "main": "dist/main.js",
   "keywords": [],
   "license": "MIT"
 }
